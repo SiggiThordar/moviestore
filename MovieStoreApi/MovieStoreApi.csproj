@@ -53,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -229,25 +230,85 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DTO\MovieDTO.cs" />
+    <Compile Include="Models\DTO\ReviewDTO.cs" />
+    <Compile Include="Models\DTO\SubscribeDTO.cs" />
+    <Compile Include="Models\EF\AspNetRoles.cs">
+      <DependentUpon>MovieStoreEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\AspNetUserClaims.cs">
+      <DependentUpon>MovieStoreEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\AspNetUserLogins.cs">
+      <DependentUpon>MovieStoreEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\AspNetUsers.cs">
+      <DependentUpon>MovieStoreEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\C__MigrationHistory.cs">
+      <DependentUpon>MovieStoreEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\Movie.cs">
+      <DependentUpon>MovieStoreEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\MovieStoreEF.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MovieStoreEF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\MovieStoreEF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MovieStoreEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\MovieStoreEF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MovieStoreEF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\Review.cs">
+      <DependentUpon>MovieStoreEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EF\Subscribe.cs">
+      <DependentUpon>MovieStoreEF.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Queries\DbMovies.cs" />
+    <Compile Include="Queries\DbReview.cs" />
+    <Compile Include="Queries\DbSubscribe.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\MovieStore.mdf" />
+    <Content Include="App_Data\MovieStore_log.ldf">
+      <DependentUpon>MovieStore.mdf</DependentUpon>
+    </Content>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\EF\MovieStoreEF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MovieStoreEF.edmx</DependentUpon>
+      <LastGenOutput>MovieStoreEF.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EF\MovieStoreEF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MovieStoreEF.edmx</DependentUpon>
+      <LastGenOutput>MovieStoreEF.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -272,6 +333,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EntityDeploy Include="Models\EF\MovieStoreEF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MovieStoreEF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EF\MovieStoreEF.edmx.diagram">
+      <DependentUpon>MovieStoreEF.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -283,6 +351,12 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Static\admin.html" />
+    <Content Include="Static\customer.html" />
+    <Content Include="Static\index.html" />
+    <Content Include="Static\js\admin.js" />
+    <Content Include="Static\js\customer.js" />
+    <Content Include="Static\js\index.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -299,7 +373,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
