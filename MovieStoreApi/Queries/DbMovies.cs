@@ -17,7 +17,7 @@ namespace MovieStoreApi.Queries
             _db = new MovieStoreEntities();
         }
 
-        public IEnumerable<MovieDTO> GetAllMovie()
+        public IEnumerable<MovieDTO> GetMovies()
         {
             return (from x in _db.Movie
                     select new MovieDTO
@@ -48,5 +48,14 @@ namespace MovieStoreApi.Queries
                         Rating = x.Rating
                     }).SingleOrDefault();
         }
+
+        //public void RentMovieById(int id, string userName)
+        //{
+        //    var movie = GetMovieById(id);
+        //    var subscribe = new Subscribe
+        //    {
+
+        //    }
+        //}
     }
 }

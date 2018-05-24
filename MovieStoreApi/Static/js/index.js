@@ -6,7 +6,7 @@
             Email: $('#rEmail').val(),
             Password: $('#rPassword').val(),
             ConfirmPassword: $('#rConfirmPassword').val(),
-            Name: $('#rName').val(),
+            FullName: $('#rFullName').val(),
             Address: $('#rAddress').val(),
             Phone: $('#rPhone').val()
         },
@@ -34,43 +34,43 @@ $('#login').click(function () {
         success: function (res) {
             console.log(res);
             token = res.access_token;
-            GetProdcts();
+            GetMovies();
         }
     })
 });
 
-function GetAllMovie() {
+function GetMovies() {
     $.ajax({
-        url: '/api/store/movies',
+        url: '/api/movie/',
         headers: {
             authorization: 'Bearer ' + token,
         },
         success: function (res) {
             console.log(res);
-            AddProduct(res);
+            AddMovie(res);
         }
     })
 };
 
-function OrderProduct(id) {
+function OrderMovie(id) {
     $.ajax({
-        url: '/api/store/products/buy/'+id,
+        url: '/api/movie/rent/'+id,
         headers: {
             authorization: 'Bearer ' + token,
         },
         success: function (res) {
-            console.log("Product Bought");
+            console.log("Movie Play");
         }
     })
 }
 
-function AddProduct(product) {
-    for (var i = 0; i < product.length; i++) {
-        console.log(product[i]);
-        $('#product').append('<li class="list-group-item">' + product[i].Name + ' <button class="buy btn-xs btn-success" value="'+product[i].Id+'">Buy</button></li>');
+function AddMovie(movie) {
+    for (var i = 0; i < movie.length; i++) {
+        console.log(movie[i]);
+        $('#movie').append('<li class="list-group-item">' + movie[i].Title + ' <button class="buy btn-xs btn-success" value="'+movie[i].Id+'">Rent</button></li>');
     }
 }
 
-$(document).on('click', '.buy', function () {
-        OrderProduct($(this).val());
+$(document).on('click', '.rent', function () {
+        OrderMovie($(this).val());
 });
