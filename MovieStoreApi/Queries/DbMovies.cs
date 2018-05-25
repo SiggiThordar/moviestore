@@ -17,7 +17,11 @@ namespace MovieStoreApi.Queries
             _db = new MovieStoreEntities();
         }
 
-        public IEnumerable<MovieDTO> GetMovies()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<MovieDTO> GetAllMovies()
         {
             return (from x in _db.Movie
                     select new MovieDTO
@@ -57,5 +61,12 @@ namespace MovieStoreApi.Queries
 
         //    }
         //}
+        public void AddMovie(MovieDTO m)
+        {
+            // do data check;
+            var movie = new Movie { Title = m.Title, Genre = m.Genre, About = m.About, Rating = m.Rating };
+            _db.Movie.Add(movie);
+            _db.SaveChanges();
+        }
     }
 }

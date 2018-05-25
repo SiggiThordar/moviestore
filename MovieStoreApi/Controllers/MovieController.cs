@@ -10,7 +10,7 @@ using MovieStoreApi.Queries;
 
 namespace MovieStoreApi.Controllers
 {
-    [RoutePrefix("api/movie")]
+    [RoutePrefix("api/moviestore")]
     public class MovieController : ApiController
     {
         private DbMovies _q;
@@ -24,7 +24,7 @@ namespace MovieStoreApi.Controllers
         [Route("movies")]
         public IEnumerable<MovieDTO> GetMovies()
         {
-            return _q.GetMovies();
+            return _q.GetAllMovies();
         }
 
         [HttpGet]
@@ -34,13 +34,23 @@ namespace MovieStoreApi.Controllers
             return _q.GetMovieById(id);
         }
 
-        //[HttpGet]
-        //[Route("movies/rent/{id}")]
-        //public void RentMoviebyId(int id)
-        //{
-        //    _q.RentMovieById(id, User.Identity.Title)
-        //}
+        
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="m"></param>
+        [HttpPost]
+        [Route("admin/movie")]
+        public void AddMovie(MovieDTO m)
+        {
+            if (!User.IsInRole("admin"))
+            {
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+
+            _q.AddMovie(m);
+        }
 
 
     }

@@ -41,7 +41,7 @@ $('#login').click(function () {
 
 function GetMovies() {
     $.ajax({
-        url: '/api/movie/',
+        url: '/api/moviestore/movies',
         headers: {
             authorization: 'Bearer ' + token,
         },
@@ -54,7 +54,7 @@ function GetMovies() {
 
 function OrderMovie(id) {
     $.ajax({
-        url: '/api/movie/rent/'+id,
+        url: '/api/moviestore/rent/'+id,
         headers: {
             authorization: 'Bearer ' + token,
         },
