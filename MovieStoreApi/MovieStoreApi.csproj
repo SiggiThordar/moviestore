@@ -231,6 +231,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -245,15 +246,7 @@
     <Compile Include="Models\DTO\MovieDTO.cs" />
     <Compile Include="Models\DTO\ReviewDTO.cs" />
     <Compile Include="Models\DTO\SubscribeDTO.cs" />
-    <Compile Include="Models\EF\AspNetRoles.cs">
-      <DependentUpon>MovieStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EF\AspNetUserClaims.cs">
-      <DependentUpon>MovieStoreEF.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EF\AspNetUserLogins.cs">
-      <DependentUpon>MovieStoreEF.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\DTO\UserDTO.cs" />
     <Compile Include="Models\EF\AspNetUsers.cs">
       <DependentUpon>MovieStoreEF.tt</DependentUpon>
     </Compile>
@@ -290,6 +283,7 @@
     <Compile Include="Queries\DbMovies.cs" />
     <Compile Include="Queries\DbReview.cs" />
     <Compile Include="Queries\DbSubscribe.cs" />
+    <Compile Include="Queries\DbUser.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

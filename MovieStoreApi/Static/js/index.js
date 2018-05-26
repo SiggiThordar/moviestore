@@ -19,6 +19,31 @@
     });
 });
 
+
+
+$('#review').click(function () {
+    $.ajax({
+        url: '/api/user/review',
+        method: 'POST',
+        headers: {
+            authorization: 'Bearer ' + token,
+        },
+        data: {
+            Id: 1,
+            CustomerUsername: 'Stefán',
+            MovieRating: 2,
+            Critic: 'Works'
+        },
+        success: function (res) {
+            console.log(res);
+        },
+        error: function (res) {
+            console.log("error!", res.responseText, res);
+        }
+    });
+});
+
+
 var token = '';
 
 $('#login').click(function () {
