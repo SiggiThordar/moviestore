@@ -18,8 +18,7 @@ namespace MovieStoreApi
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
-            var corsAttr = new EnableCorsAttribute("http://localhost:4200", "*", "*");
-            config.EnableCors(corsAttr);
+            
 
             // Web API routes
             config.MapHttpAttributeRoutes();
