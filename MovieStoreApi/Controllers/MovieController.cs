@@ -21,7 +21,7 @@ namespace MovieStoreApi.Controllers
         }
 
         [HttpGet]
-        [Route("allmovies")]
+        [Route("movielist")]
         public IEnumerable<MovieDTO> GetMovies()
         {
             return mDb.GetAllMovies();
