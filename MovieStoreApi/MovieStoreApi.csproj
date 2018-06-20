@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201805221843082_InitialCreate.Designer.cs">
       <DependentUpon>201805221843082_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806200103351_Fyrsta-Migration.cs" />
+    <Compile Include="Migrations\201806200103351_Fyrsta-Migration.Designer.cs">
+      <DependentUpon>201806200103351_Fyrsta-Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -388,6 +392,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805221843082_InitialCreate.resx">
       <DependentUpon>201805221843082_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806200103351_Fyrsta-Migration.resx">
+      <DependentUpon>201806200103351_Fyrsta-Migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

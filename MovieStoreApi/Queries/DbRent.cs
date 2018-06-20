@@ -51,34 +51,38 @@ namespace MovieStoreApi.Queries
 
         public IEnumerable<RentDTO> GetAllRentsByUserName(string UserName)
         {
-            var rentList = (from x in _db.Rent
-                             where x.UserId == UserName
-                             select x);
-
-            return ListRentToDTO(rentList);
+            return (from x in _db.Rent
+                    where x.UserId == UserName
+                    select new RentDTO
+                    {
+                        Id = x.Id,
+                        MovieId = x.MovieId,
+                        MovieTitle = x.MovieTitle,
+                        UserId = x.UserId
+                    });            
         }
 
         // PrivateFunctions
-        private IEnumerable<RentDTO> ListRentToDTO(IEnumerable<Rent> r)
-        {
-            var rentListDto = new List<RentDTO>();
-            foreach (var item in r)
-            {
-                rentListDto.Add(RentToDTO(item));
-            }
+        //private IEnumerable<RentDTO> ListRentToDTO(IEnumerable<Rent> r)
+        //{
+        //    var rentListDto = new List<RentDTO>();
+        //    foreach (var item in r)
+        //    {
+        //        rentListDto.Add(RentToDTO(item));
+        //    }
 
-            return rentListDto;
-        }
+        //    return rentListDto;
+        //}
 
-        private RentDTO RentToDTO(Rent r)
-        {
-            return new RentDTO
-            {
-                Id = r.Id,
-                MovieId = r.MovieId,
-                MovieTitle = r.MovieTitle,
-                UserId = r.UserId
-            };
-        }
+        //private RentDTO RentToDTO(Rent r)
+        //{
+        //    return new RentDTO
+        //    {
+        //        Id = r.Id,
+        //        MovieId = r.MovieId,
+        //        MovieTitle = r.MovieTitle,
+        //        UserId = r.UserId
+        //    };
+        //}
     }
 }

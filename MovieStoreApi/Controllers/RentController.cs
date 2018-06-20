@@ -9,16 +9,18 @@ using MovieStoreApi.Models.DTO;
 
 namespace MovieStoreApi.Controllers
 {
+
+    //[Authorize]
     [RoutePrefix("api/rent")]
     public class RentController : ApiController
     {
         private DbRent rDb;
-        //private DbMovies mDb;
+        private DbMovies mDb;
 
         public RentController()
         {
             rDb = new DbRent();
-            //mDb = new DbMovies();
+            mDb = new DbMovies();
         }
 
         //api/rent/movie/'+id,
@@ -30,7 +32,7 @@ namespace MovieStoreApi.Controllers
         }
 
         [HttpGet]
-        [Route("rented/user")]
+        [Route("user")]
         public IEnumerable<RentDTO> GetAllRentsByUser()
         {
             return rDb.GetAllRentsByUserName(User.Identity.Name);
